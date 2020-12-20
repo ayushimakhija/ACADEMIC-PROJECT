@@ -7,4 +7,6 @@ public interface SpecializationDao {
     void registerSpecialization(Specialization specialization);
 
     Specialization getSpecializationByID(Specialization specialization);
+
+    Specialization getSpecializationByCode(String code);
 }

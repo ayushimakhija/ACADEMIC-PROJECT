@@ -34,4 +34,18 @@ public class SpecializationDaoImpl implements SpecializationDao {
         }
         return null;
     }
+
+    @Override
+    public Specialization getSpecializationByCode(String code) {
+        try (Session session = SessionUtil.getSession()) {
+            Query query = session.createQuery("from Specialization where code=:code");
+            query.setParameter("code", code);
+            for (final Object fetch : query.list()) {
+                return (Specialization) fetch;
+            }
+        } catch (HibernateException exception) {
+            System.out.print(exception.getLocalizedMessage());
+        }
+        return null;
+    }
 }

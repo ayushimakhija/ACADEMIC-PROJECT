@@ -17,6 +17,7 @@ public interface StudentDao {
 
     List<Course> getPassedCourses(Student student);
 
+    void updateStudentSpecialization(Student student, Specialization specialization);
 
 
 }

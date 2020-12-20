@@ -75,4 +75,16 @@ public class StudentDaoImpl  implements StudentDao {
         }
         return courses;
     }
+
+    @Override
+    public void updateStudentSpecialization(Student student, Specialization specialization) {
+        try (Session session = SessionUtil.getSession()) {
+            Transaction transaction = session.beginTransaction();
+            student.setSpecialization(specialization);
+            session.saveOrUpdate(student);
+            transaction.commit();
+        } catch (HibernateException exception) {
+            System.out.print(exception.getLocalizedMessage());
+        }
+    }
 }
